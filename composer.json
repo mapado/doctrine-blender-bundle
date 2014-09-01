@@ -1,0 +1,17 @@
+{
+    "name": "mapado/doctrine-blender-bundle",
+    "description": "Bundle in change of the mapado/doctrine-blender package configuration",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Julien Deniau",
+            "email": "julien.deniau@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "Mapado\\DoctrineBlenderBundle\\": "src/" }
+    },
+    "require": {
+        "mapado/doctrine-blender": ">=0.3.0,<1.0"
+    }
+}

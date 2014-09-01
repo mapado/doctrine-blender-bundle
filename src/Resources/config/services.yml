@@ -1,0 +1,10 @@
+services:
+    entity_listener:
+        class: Mapado\DoctrineBlenderBundle\EntityListener
+        arguments:
+            - @service_container
+            - %mapado_doctrine_external_associations%
+
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
+            - { name: doctrine_mongodb.odm.event_listener, event: loadClassMetadata }
