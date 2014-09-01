@@ -71,17 +71,21 @@ class EntityListener
         if (!isset($this->registeredManagers[$className])) {
             foreach ($this->configuration as $config) {
                 if ($className == $config['classname']) {
-                    $externalAssociation = new \Mapado\DoctrineBlender\ExternalAssociation(
-                        $this->container->get($config['source_object_manager']),
-                        $config['classname'],
-                        $config['property_name'],
-                        $config['reference_getter'],
-                        $this->container->get($config['reference_object_manager']),
-                        $config['reference_class']
-                    );
+                    $sourceObjectManager = $this->container->get($config['source_object_manager']);
+
+                    foreach ($config['references'] as $propertyName => $reference) {
+                        $externalAssociation = new \Mapado\DoctrineBlender\ExternalAssociation(
+                            $sourceObjectManager,
+                            $className,
+                            $propertyName,
+                            $reference['reference_getter'],
+                            $this->container->get($reference['reference_object_manager']),
+                            $reference['reference_class']
+                        );
 
 
-                    $this->blender->mapExternalAssociation($externalAssociation);
+                        $this->blender->mapExternalAssociation($externalAssociation);
+                    }
                 }
             }
 
