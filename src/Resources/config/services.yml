@@ -8,3 +8,4 @@ services:
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }
             - { name: doctrine_mongodb.odm.event_listener, event: loadClassMetadata }
+            - { name: mapado_elastica_query_builder.event_listener, event: loadClassMetadata }
