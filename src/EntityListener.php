@@ -74,13 +74,16 @@ class EntityListener
                     $sourceObjectManager = $this->container->get($config['source_object_manager']);
 
                     foreach ($config['references'] as $propertyName => $reference) {
+                        $refIdGetter = !empty($reference['reference_id_getter']) ? $reference['reference_id_getter'] : null;
+                        $refSetter = !empty($reference['reference_setter']) ? $reference['reference_setter'] : null;
                         $externalAssociation = new \Mapado\DoctrineBlender\ExternalAssociation(
                             $sourceObjectManager,
                             $className,
                             $propertyName,
-                            $reference['reference_getter'],
                             $this->container->get($reference['reference_object_manager']),
-                            $reference['reference_class']
+                            $reference['reference_class'],
+                            $refIdGetter,
+                            $refSetter
                         );
 
 

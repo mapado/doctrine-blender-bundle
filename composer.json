@@ -12,6 +12,6 @@
         "psr-4": { "Mapado\\DoctrineBlenderBundle\\": "src/" }
     },
     "require": {
-        "mapado/doctrine-blender": ">=0.3.0,<1.0"
+        "mapado/doctrine-blender": ">=0.4.0,<1.0"
     }
 }

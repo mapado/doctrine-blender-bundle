@@ -101,7 +101,8 @@ mapado_doctrine_blender:
             classname: 'Acme\DemoBundle\Entity\Order'
             references:
                 product: # this is the name of the property in the source entity
-                    reference_getter: 'getProductId' # method in the source entity fetching the ref.id
+                    reference_id_getter: 'getProductId' # optional, method in the source entity fetching the ref.id
+                    reference_setter: 'setProduct' # optional, method in the source entity to set the reference
                     reference_object_manager: 'doctrine_mongodb.odm.product_document_manager'
                     reference_class: 'Acme\DemoBundle\Document\Product'
 
