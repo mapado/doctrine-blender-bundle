@@ -106,6 +106,12 @@ mapado_doctrine_blender:
                     reference_object_manager: 'doctrine_mongodb.odm.product_document_manager'
                     reference_class: 'Acme\DemoBundle\Document\Product'
 
+                tags: # can also be an array (or an iterator)
+                    reference_id_getter: 'getTagIds' # must return an array (or an iterator) of identifiers
+                    reference_setter: 'setTags'
+                    reference_object_manager: 'doctrine_mongodb.odm.tag_document_manager'
+                    reference_class: 'Acme\DemoBundle\Document\Tag'
+
                 another_reference:
                     # ...
 
