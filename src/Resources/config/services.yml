@@ -1,9 +1,14 @@
 services:
+    mapado_doctrine_blender_instance:
+        public: false
+        class: Mapado\DoctrineBlender\ObjectBlender
+
     entity_listener:
         class: Mapado\DoctrineBlenderBundle\EntityListener
         arguments:
             - "@service_container"
             - "%mapado_doctrine_external_associations%"
+            - "@mapado_doctrine_blender_instance"
 
         tags:
             - { name: doctrine.event_listener, event: loadClassMetadata }

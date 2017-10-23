@@ -4,9 +4,8 @@ namespace Mapado\DoctrineBlenderBundle;
 
 use Doctrine\Common\EventArgs;
 use Doctrine\Common\Persistence\Event\LoadClassMetadataEventArgs;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-
 use Mapado\DoctrineBlender\ObjectBlender;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class EntityListener
 {
@@ -57,12 +56,15 @@ class EntityListener
      * @param array $configuration
      * @access public
      */
-    public function __construct(ContainerInterface $container, array $configuration)
-    {
+    public function __construct(
+        ContainerInterface $container,
+        array $configuration,
+        oBJEctBlender $blender
+    ) {
         $this->container = $container;
         $this->configuration = $configuration;
 
-        $this->blender = new ObjectBlender;
+        $this->blender = $blender;
         $this->registeredClasses = [];
         $this->registeredManagers = [];
     }
